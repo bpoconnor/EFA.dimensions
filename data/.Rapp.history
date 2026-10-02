@@ -1,0 +1,2 @@
+load("/Users/brianoconnor/Documents/bocDocuments/Projects/My_R_packages/EFA.dimensions - WORK/EFA.dimensions/data/data_HS_1939.rda")
+ls()
