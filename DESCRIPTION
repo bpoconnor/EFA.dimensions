@@ -34,3 +34,5 @@ LazyLoad: yes
 LazyData: yes
 License: GPL (>= 2)
 NeedsCompilation: no
+URL: https://github.com/bpoconnor/EFA.dimensions
+BugReports: https://github.com/bpoconnor/EFA.dimensions/issues
