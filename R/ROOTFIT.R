@@ -1,6 +1,6 @@
 
 ROOTFIT <- function (data, corkind='pearson', Ncases=NULL, extraction='PAF', 
-                     verbose = 'TRUE', factormodel) {
+                     verbose = TRUE, factormodel) {
   
   # deprecated  
   if (!missing(factormodel))  extraction <- factormodel
@@ -76,20 +76,26 @@ ROOTFIT <- function (data, corkind='pearson', Ncases=NULL, extraction='PAF',
       dof <- 0.5 * ((Nvars - root)^2 - Nvars - root) # The degrees of freedom for the model
       if (dof < 1) {
         fits <- fits[1:(root-1),]
-        if (verbose == 'TRUE') {
+        if (verbose) {
           cat('\nThe degrees of freedom for the model with ',
                   root,' factors is < 1 and so the procedure was stopped.')}
         break
       }
       
-      essaye <- try(Output <- EFA(data=cormat, extraction=extraction, Nfactors=root, Ncases=Ncases, 
-                                  rotation='none', iterpaf=400, verbose=FALSE), silent=TRUE)		                                       
+      essaye <- try(Output <- suppressWarnings(EFA(data=cormat, extraction=extraction, Nfactors=root, Ncases=Ncases, 
+                                  rotation='none', iterpaf=400, verbose=FALSE)), silent=TRUE)		                                       
       if (inherits(essaye, "try-error")) {
         message('\nfactanal produced an error when Nfactors = ', root)
         fits <- fits[1:(root-1),]
         break
       }
       
+      if (is.nan(Output$fit_coefs$chisqMODEL)) {
+        message('\nAn NaN was produced when Nfactors = ', root)
+        fits <- fits[1:(root-1),]
+        break
+      }
+
       fits[root,3:13] <- unlist(Output$fit_coefs[c('RMSR', 'GFI', 'CAF','RMSEA','TLI',
                                                    'CFI','MFI','BIC','AIC','CAIC','SABIC')])
     }
@@ -99,7 +105,7 @@ ROOTFIT <- function (data, corkind='pearson', Ncases=NULL, extraction='PAF',
   }
   
   
-  if (verbose == 'TRUE') {
+  if (verbose) {
     
     cat('\n\nFit coefficients for N-factor solutions')
     

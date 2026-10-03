@@ -47,13 +47,13 @@ EXTENSION_FA <- function(data,
   
   # improper specification warnings
   if ((Ncore+Next) > Nvars) {
-    message('\n\nWARNING: More core and/or extension variables were specified than 
-	     there are variables in the raw data matrix: Expect error messages') 
+    message('\n\nNOTE: More core and/or extension variables were specified than
+      there are variables in the raw data matrix: Expect error messages') 
   }
   if (Nvars > (Ncore+Next)){
-    message('\n\nWARNING: There are more variables in the raw data set
-         than there are core & extension variables. The data 
-         matrix was trimmed to core+extension variables.\n')
+    message('\n\nNOTE: There are more variables in the raw data set
+      than there are core & extension variables. The data 
+      matrix was trimmed to core + extension variables.\n')
     data <- data[,1:(Ncore+Next)]
     Nvars <- ncol(data) 
   }
@@ -264,16 +264,16 @@ EXTENSION_FA <- function(data,
   
   # Warning message
   if (higherorder==TRUE & Nfactors1 == 1) {
-    message('\n\nWARNING: Higher Order Factor/Extension Analysis was requested, but there was
-         only one factor in the lower-order data.
-         The higher order analyses were not performed.') 
+    message('\n\nNOTE: Higher Order Factor/Extension Analysis was requested, but there was
+      only one factor in the lower-order data.
+      The higher order analyses were not performed.') 
   }
   
   # Warning message
   if (higherorder==TRUE & rotation != 'promax') {
-    message('\n\nWARNING: Higher Order Factor/Extension Analysis was requested, as was
-         a ROTATE option that does not produce correlations between between factors.
-         The higher order analyses were not performed.') 
+    message('\n\nNOTE: Higher Order Factor/Extension Analysis was requested, as was
+      a ROTATE option that does not produce correlations between between factors.
+      The higher order analyses were not performed.') 
   }
   
   if (higherorder==TRUE & Nfactors1 > 1 & rotation == 'promax') {
@@ -320,13 +320,13 @@ EXTENSION_FA <- function(data,
       print(round(fits1,2))
       
       if (warnnf1 == 1) {
-        cat('\n\nWARNING: Zero factors were found in the data.
-         The number of factors was therefore set at 1.') 
+        cat('\n\nNOTE: Zero factors were found in the data.
+      The number of factors was therefore set at 1.\n') 
       }
       
       cat('\nNumber of factors in the core variables = ', Nfactors1, '\n')
       
-      if (Nfactors1 == 1)  cat('\n\nWARNING: There was only one factor, rotation not performed\n') 
+      if (Nfactors1 == 1)  cat('\n\nNOTE: There was only one factor, rotation not performed\n') 
       
       if (rotation == 'promax' & Nfactors1 > 1) {
         cat('\nFactor Intercorrelations:\n\n')
@@ -361,13 +361,13 @@ EXTENSION_FA <- function(data,
       print(round(fits2,2))
       
       if (warnnf2 == 1) {
-        cat('\n\nWARNING: Zero factors were found in the higher order data.
-         The number of factors was therefore set at 1.')
+        cat('\n\nNOTE: Zero factors were found in the higher order data.
+      The number of factors was therefore set at 1.\n')
       }
       
       cat('\nNumber of Factors for the Higher Order Factor Analysis = ', Nfactors2) 
       if (Nfactors2 == 1) {
-        cat('\n\nWARNING: There was only one higher order factor, rotation not performed\n') 
+        cat('\n\nNOTE: There was only one higher order factor, rotation not performed\n') 
       }
       
       cat('\nFactor Intercorrelations from the First Factor Analysis and, in the

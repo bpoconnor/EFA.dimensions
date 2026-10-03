@@ -68,7 +68,7 @@
  
   \item{LV_options}{
   \code{}(optional) A list with cfa options when bifactor_kind = 'CFA'. 
-  The possible list elements are 'group_keys', 'N_group_factors',
+  The possible list elements are 'group_keys', 
   'estimator', 'rotation', 'resid_correls', 'LV_names', and 'ordered'. 
   See the Details section below for information on each element.}
   
@@ -341,18 +341,16 @@ BIFACTOR(rawdata = data_RSE, Nfactors = 3,
          bifactor_kind = 'bifactorT', 
          EFA_options = list(extraction = 'minres', rotation = 'oblimin')) 
          
-# confirmatory bifactor analyses
-BIFACTOR(rawdata = data_RSE, 
+# confirmatory bifactor analyses, Sanchez-Oliva et al. (2017) data
+BIFACTOR(rawdata = data_SDT,   
          bifactor_kind = 'CFA', 
-         LV_options = list(group_keys = c(1, 1, 2, 1, 2, 1, 1, 2, 2, 2), 
-                           N_group_factors = NULL,
-                           estimator = 'WLSMV',
-                           rotation = 'bigeomin',
-                           resid_correls = NULL,
+         LV_options = list(group_keys = c(1,1,1,1,2,2,2,2,3,3,3,3), 
+                           estimator='MLR', 
+                           resid_correls=NULL, 
                            LV_names=NULL,
-                           ordered = TRUE),
-         min_loading = .0001) 
+                           ordered = FALSE))
 }
+                           
 # See this web page for additional Examples:
 
 # https://oconnor-psych.ok.ubc.ca/vignettes/EXAMPLES_vignettes.html

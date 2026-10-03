@@ -218,17 +218,11 @@ have suggested that the SABIC is a useful tool in comparing models.
 \donttest{
 # the Harman (1967) correlation matrix
 ROOTFIT(data_Harman, Ncases = 305, extraction='ml')
-ROOTFIT(data_Harman, Ncases = 305, extraction='paf')
-ROOTFIT(data_Harman, Ncases = 305, extraction='pca')
 
 # RSE data
-ROOTFIT(data_RSE, corkind='pearson', extraction='ml')
-ROOTFIT(data_RSE, corkind='pearson', extraction='paf')
-ROOTFIT(data_RSE, corkind='pearson', extraction='pca')
+ROOTFIT(data_RSE, extraction='paf')
 
 # NEO-PI-R scales
-ROOTFIT(data_NEOPIR, corkind='pearson', extraction='ml')
-ROOTFIT(data_NEOPIR, corkind='pearson', extraction='paf')
-ROOTFIT(data_NEOPIR, corkind='pearson', extraction='pca')
+ROOTFIT(data_NEOPIR, extraction='pca')
 }
 }

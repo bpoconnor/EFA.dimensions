@@ -294,28 +294,28 @@ Factorial_Invariance <- function(data, group,
         
         if ('std' %in% disp_options$coefs) {
           
-          cat('Standardized loadings for each group (', lupe, '):\n\n', sep='')
+          cat('\n\nStandardized loadings for each group (', lupe, '):\n\n', sep='')
           
           print(lapply(lapply(lavInspect(obj, what = "std"), function(x) x$lambda), round, digits = 2), print.gap=4)
         }
         
         if ('phi' %in% disp_options$coefs) {  # psi = latent variable covariance matrix.
           
-          cat('Latent variable intercorrelations for each group (', lupe, '):\n\n', sep='')
+          cat('\n\nLatent variable intercorrelations for each group (', lupe, '):\n\n', sep='')
           
           print(lapply(lavInspect(obj, what = "cor.lv"), round, digits = 2), print.gap=4)
         }
         
         if ('LV_means' %in% disp_options$coefs) {
           
-          # warning if the latent means are the same for the groups 
-          # (e.g., when intercepts & loadings were not constricted to be equal)
-          # need at least Scalar, & not Metric or Configural
-          if (all(round(LV_grp_means_outp[[lupe]],4) == 0)) {
-            cat('\n\nWARNING: The latent trait means for the groups are apparently the same.')
-            cat('\nThis occurs in a model where the intercepts & loadings were not constrained to be equal.')
-            cat('\nConsider using a "Scalar" model instead.\n')
-          }
+          # # warning if the latent means are the same for the groups 
+          # # (e.g., when intercepts & loadings were not constricted to be equal)
+          # # need at least Scalar, & not Metric or Configural
+          # if (all(round(LV_grp_means_outp[[lupe]],4) == 0)) {
+          #   cat('\n\nWARNING: The latent trait means for the groups are apparently the same.')
+          #   cat('\nThis occurs in a model where the intercepts & loadings were not constrained to be equal.')
+          #   cat('\nConsider using a "Scalar" model instead.\n\n')
+          # }
           
           cat('Latent variable group means (', lupe, '):\n\n', sep='')
           print(round(LV_grp_means_outp[[lupe]],2), print.gap=4)

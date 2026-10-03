@@ -138,7 +138,7 @@ LV_options_check <- function(LV_options) {
   
   # LV_options$rotation must be either 'bigeomin' or 'biquartimin' (for bifactor via lavaan::cfa)
   if (!LV_options$rotation %in% c('bigeomin','biquartimin')) {
-    cat('\nLV_options$rotation must be either bigeomin or biquartimin. It will be changed to bigeomin.')
+    cat('\nLV_options$rotation must be either bigeomin or biquartimin. It will be changed to bigeomin.\n\n')
     LV_options$rotation <- 'bigeomin'
   }
   
@@ -1112,7 +1112,7 @@ VARIMAX <- function (loadings, normalize = TRUE, verbose=TRUE) {
   if (is.list(loadings) == 'TRUE')  loadings <- loadings$loadings
   
   if (ncol(loadings) == 1 & verbose==TRUE) {
-    message('\nWARNING: There was only one factor. Rotation was not performed.\n')
+    message('\nNOTE: There was only one factor. Rotation was not performed.\n')
   }
   
   if (ncol(loadings) > 1) {
@@ -1175,7 +1175,7 @@ PROMAX <- function (loadings, ppower=4, verbose=TRUE) {
   if (ncol(loadings) == 1)  {	
     promaxOutput <- list(loadingsNOROT=loadings, pattern=loadings, structure=loadings)
     return(invisible(promaxOutput))
-    if (verbose ) message('\nWARNING: There was only one factor. Rotation was not performed.\n')
+    if (verbose ) message('\nNOTE: There was only one factor. Rotation was not performed.\n')
   }
   
   if (ncol(loadings) > 1) {

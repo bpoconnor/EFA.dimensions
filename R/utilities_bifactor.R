@@ -507,9 +507,9 @@ show_bifactor_stats <- function(bifactor_output) {
   }
   
   if (bifactor_output$bifactor_flag) {
-    cat('\n\n\nWARNING: The bifactor loadings do not seem consistent with a bifactor structure:')
-    cat('\n         There are items that have more than two loadings that are >= the')
-    cat('\n         min_loading value of', bifactor_output$min_loading)
+    cat('\n\n\nNOTE: The bifactor loadings do not seem consistent with a bifactor structure:')
+    cat('\n      There are items that have more than two loadings that are >= the')
+    cat('\n      min_loading value of', bifactor_output$min_loading)
   }  
   
   if (is.null(bifactor_output$structure_BIF)) {

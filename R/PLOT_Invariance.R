@@ -159,9 +159,9 @@ PLOT_Invariance <- function(model_object,
     # warning if the slopes are the same for the groups 
     # (e.g., when loadings were constricted to be equal) = any model other than Configural
     if (all(round(grp1_slos$est,4) == round(grp2_slos$est,4))) {
-      cat('\n\nWARNING: The slopes for the groups are apparently the same.')
-      cat('\nThis occurs when the slopes are constrained to be equal.')
-      cat('\nConsider using a "Configural" model instead.\n\n')
+      cat('\n\nNOTE: The slopes for the groups are apparently the same.')
+      cat('\n      This occurs when the slopes are constrained to be equal.')
+      cat('\n      Consider using a "Configural" model instead.\n\n')
     }
     
     for (lupe_LVs in 1:N_LVs) {
@@ -270,9 +270,9 @@ PLOT_Invariance <- function(model_object,
     # (e.g., when intercepts & loadings were not constricted to be equal)
     # need at least Scalar, & not Metric or Configural
     if (all(round(mns,4) == 0)) {
-      cat('\n\nWARNING: The latent trait means for the groups are apparently the same.')
-      cat('\nThis occurs in a model where the intercepts & loadings were not constrained to be equal.')
-      cat('\nConsider using a "Scalar" model instead.\n')
+      cat('\n\nNOTE: The latent trait means for the groups are apparently the same.')
+      cat('\n      This occurs in a model where the intercepts & loadings were not constrained to be equal.')
+      cat('\n      Consider using a "Scalar" model instead.\n')
     }
     
     cat('\n\nLatent variable means:\n\n')
